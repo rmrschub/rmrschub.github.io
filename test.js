@@ -110,7 +110,7 @@ async function start(){
 	
         
         model = await tf.loadFrozenModel(
-            'model/resnet_32_logcosh.pb',
+            'model/tensorflowjs_model.pb',
             'model/weights_manifest.json')
         
         var status = document.getElementById('status')
