@@ -109,7 +109,7 @@ async function start(){
 	//img = document.getElementById('image').files[0];
 	
         
-        model = await tf.loadModel('model/weights_manifest.json')
+        model = await tf.loadModel('https://raw.githubusercontent.com/rmrschub/elpv/master/model/weights_manifest.json')
         
         var status = document.getElementById('status')
       
