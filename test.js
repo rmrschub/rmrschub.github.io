@@ -109,7 +109,7 @@ async function start(){
 	//img = document.getElementById('image').files[0];
 	
         
-        model = await tf.loadModel('https://github.com/rmrschub/rmrschub.github.io/raw/master/elpv_model/model.json')
+        model = await tf.loadModel('https://github.com/rmrschub/elpv/blob/master/elpv_model/model.json')
         
         var status = document.getElementById('status')
       
