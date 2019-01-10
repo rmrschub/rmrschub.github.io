@@ -110,8 +110,8 @@ async function start(){
 	
         
         model = await tf.loadFrozenModel(
-            'https://github.com/rmrschub/elpv/blob/master/model/resnet_32_logcosh.pb?raw=true',
-            'https://raw.githubusercontent.com/rmrschub/elpv/master/model/weights_manifest.json')
+            'https://github.com/rmrschub/rmrschub.github.io/blob/master/model/resnet_32_logcosh.pb?raw=true',
+            'https://github.com/rmrschub/rmrschub.github.io/raw/master/model/weights_manifest.json')
         
         var status = document.getElementById('status')
       
