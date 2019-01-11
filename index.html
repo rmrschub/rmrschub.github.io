@@ -27,64 +27,33 @@
             <h4 id ='status' >Loading Model... </h4>
         </div>
     
-        <img id="myimage" height="50">
+    
+        <div>
+            <img id="elpv_image" src="https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell0001.png" />
+            <p id = "Result"></p>
+            <p id = "Probability"></p>
 
-<!--
-    <script>
-      $(function(){
-        $("input[type='Submit']").click(function(){
-            var $fileUpload = $("input[type='file']");
-            if (parseInt($fileUpload.get(0).files.length)>1){
-             alert("You can only upload a maximum of 1 files");
+            <button id="btnPredict" value="submit" onclick = "start()">Predict defect</button>
+            <button id="btnImg"     value="submit" >Choose random image</button>
+        </div>
+        
+        
+        <script type="text/javascript">
+            Number.prototype.pad = function(size) {
+                var sign = Math.sign(this) === -1 ? '-' : '';
+                return sign + new Array(size).concat([Math.abs(this)]).join('0').slice(-size);
             }
-        });    
-    });
-     function clearFileInput(id) 
-    { 
-        var oldInput = document.getElementById(id); 
-        var newInput = document.createElement("input"); 
-        newInput.type = "file"; 
-        newInput.id = oldInput.id; 
-        newInput.name = oldInput.name; 
-        newInput.className = oldInput.className; 
-        newInput.style.cssText = oldInput.style.cssText; 
-        // TODO: copy any other relevant attributes 
-        oldInput.parentNode.replaceChild(newInput, oldInput); 
-    }    
-    </script>
-        
-    <input type="file" id="files" name="files[]" accept=".jpg, .jpeg, .png"/>
-    <output id="list"></output>
-    <button type="button" value="Submit" onclick = "start()">submit</button>
--->
-        
-    <div>
-        <img id="elpv_image" src="https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell0001.png" />
-        <p id = "Result"></p>
-        <p id = "Probability"></p>
-    </div>
-        
-        
-        
-    <button id="btnPredict" value="submit" onclick = "start()">Predict defect</button>
-    <button id="btnImg"     value="submit" >Choose random image</button>
 
-    <script type="text/javascript">
-        Number.prototype.pad = function(size) {
-            var sign = Math.sign(this) === -1 ? '-' : '';
-            return sign + new Array(size).concat([Math.abs(this)]).join('0').slice(-size);
-        }
-        
-        document.getElementById('btnImg').onclick = function() {
-            
-            var min = 1;
-            var max = 2624;
-            var val = Math.floor(Math.random() * (max - min + 1)) + min;
-            src = 'https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell'+ (val).pad(4) + '.png';
-            console.log(val)
-            document.getElementById("elpv_img").src = src;
-        }
-    </script>
+            document.getElementById('btnImg').onclick = function() {
+
+                var min = 1;
+                var max = 2624;
+                var val = Math.floor(Math.random() * (max - min + 1)) + min;
+                src = 'https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell'+ (val).pad(4) + '.png';
+                console.log(val)
+                document.getElementById("elpv_image").src = src;
+            }
+        </script>
         
         
 
