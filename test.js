@@ -88,13 +88,13 @@ function predict(imgData) {
 }
 
 async function start(){
-        model = await tf.loadModel('https://github.com/rmrschub/elpv/raw/master/elpv_resnet50/model.json', strict=true)
     
+    if (!model) {
+        model = await tf.loadModel('https://rmrschub.github.io/images/model/model.json', strict=true)
         var status = document.getElementById('status')
-      
         status.innerHTML = 'Model Loaded'
-
-        img = document.getElementById('elpv_image')
-
-        predict(img)         
+    }
+    
+    img = document.getElementById('elpv_image')
+    predict(img)         
 }
