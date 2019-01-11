@@ -19,7 +19,14 @@
 
         <div class="container-fluid"> 
             <blockquote class="blockquote text-justify" style="margin:30px;">
-                <p> This is a simple tool that uses Resnet to recognize defecs in ELPV images. The model was trained to recognize  with 2.6k images and it achieves ~80% accuracy in predicting defects in PV mini modules.</p>
+                <p>This is a simple tool that uses Resnet to recognize defects in electroluminescence images of PV mini modules.</p>
+                <p>The model was trained to recognize various defects with 2.6k images and it achieves ~80% overall prediction accuracy.</p>
+            </blockquote>
+            
+            <blockquote class="blockquote text-justify" style="margin:30px;">
+                <p>Usage:</p>
+                <p>Press on "Predict defect" to calculate the defect probability of the displayed PV mini module. Note that first prediction requires the neural network model (~200Mb) to be downloaded by your browser. All following predictions will reuse tis neural network model and should be fast :)</p>
+                <p>Press on "Load next image" to randomly select another electroluminescence image.</p>
             </blockquote>
         </div>
         
@@ -60,37 +67,18 @@
         
         
 
+        <div class="container-fluid"> 
+            <blockquote class="blockquote text-justify" style="margin:30px;">
+                <p>This is a just quick hack (approx. 2 working days). More data, more training and some AI trickery will improve the network.</p>
+                <p>The demo formulates defect detection as a continuous regression problem. It is straight forward to transform this network into a binary classification problem (network just states if there is a defect or not) or even into a multi-label classification problem (network prediction the type of defect, the type of PV technology, etc.)</p>
+            </blockquote>
+        </div>
         
-        
+        <div class="container-fluid"> 
+            <blockquote class="blockquote text-justify" style="margin:30px;">
+                <p>Happy birthday and happy clicking :)</p>
+            </blockquote>
+        </div>
 
-<!--
-    <script> 
-
-     function handleFileSelect(evt) {
-       var files = evt.target.files; // FileList object
-       // Loop through the FileList and render image files as thumbnails.
-       for (var i = 0, f; f = files[i]; i++) {
-         // Only process image files.
-         if (!f.type.match('image.*')) {
-           continue;
-         }
-         var reader = new FileReader();
-         // Closure to capture the file information.
-         reader.onload = (function(theFile) {
-           return function(e) {
-             // Render thumbnail.
-             var span = document.createElement('span');
-             span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                               '" title="', escape(theFile.name), '"/>'].join('');
-             document.getElementById('list').insertBefore(span, null);
-           };
-         })(f);
-         // Read in the image file as a data URL.
-         reader.readAsDataURL(f);
-       }
-     }
-     document.getElementById('files').addEventListener('change', handleFileSelect, false);
-    </script>
- -->
     </body>
 </html>
