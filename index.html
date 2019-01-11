@@ -1,98 +1,117 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
 
-    <!-- TensorFlow.js script -->
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"></script>
-<script
- src="https://code.jquery.com/jquery-3.3.1.js"
- integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
- crossorigin="anonymous"></script>
+        <!-- TensorFlow.js script -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"></script>
+        <script
+         src="https://code.jquery.com/jquery-3.3.1.js"
+         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+         crossorigin="anonymous"></script>
 
-<!-- main script -->
-<!--<script src = "main.js" > </script> -->
-<script src = "test.js" > </script>
-<!-- <script src = "main.css" > </script> -->
-</head>
-<body>
-<h1 align="center">PV mini module defect detection</h1>      
-<div class="container-fluid"> 
-
-<blockquote class="blockquote text-justify" style="margin:30px;">
- <p> This is a simple tool that uses Resnet to recognize defecs in ELPV images. 
- The model was trained to recognize  with 2.6k images and it achieves ~80.3% accuracy in detecting defects in PV mini modules.  </p>
-    <footer class="blockquote-footer">Saranya</footer>
-  </blockquote>
-
-</div>
-<div class="col" style ='margin-left:100px;'>
-<h4 id ='status' >Loading Model... </h4>
-</div>
-<img id="myimage" height="50">
-
-</div>
-<script>
-  $(function(){
-    $("input[type='Submit']").click(function(){
-        var $fileUpload = $("input[type='file']");
-        if (parseInt($fileUpload.get(0).files.length)>1){
-         alert("You can only upload a maximum of 1 files");
-        }
-    });    
-});
- function clearFileInput(id) 
-{ 
-    var oldInput = document.getElementById(id); 
-    var newInput = document.createElement("input"); 
-    newInput.type = "file"; 
-    newInput.id = oldInput.id; 
-    newInput.name = oldInput.name; 
-    newInput.className = oldInput.className; 
-    newInput.style.cssText = oldInput.style.cssText; 
-    // TODO: copy any other relevant attributes 
-    oldInput.parentNode.replaceChild(newInput, oldInput); 
-}    
-</script>     
-<input type="file" id="files" name="files[]" accept=".jpg, .jpeg, .png"/>
-<output id="list"></output>
-<button type="button" value="Submit" onclick = "start()">submit</button>
-<div>
-<p id = "Result"></p>
-<p id = "Probability"></p>
-</div>
-<script>
-clearFileInput("files");
-</script>    
+        <!-- main script -->
+        <script src = "test.js" > </script>
+    </head>
     
-<script> 
-  
- function handleFileSelect(evt) {
-   var files = evt.target.files; // FileList object
-   // Loop through the FileList and render image files as thumbnails.
-   for (var i = 0, f; f = files[i]; i++) {
-     // Only process image files.
-     if (!f.type.match('image.*')) {
-       continue;
+    <body>
+        
+        <h1 align="center">PV mini module defect detection</h1>
+
+        <div class="container-fluid"> 
+            <blockquote class="blockquote text-justify" style="margin:30px;">
+                <p> This is a simple tool that uses Resnet to recognize defecs in ELPV images. The model was trained to recognize  with 2.6k images and it achieves ~80.3% accuracy in detecting defects in PV mini modules.</p>
+            </blockquote>
+        </div>
+        
+        <div class="col" style ='margin-left:100px;'>
+            <h4 id ='status' >Loading Model... </h4>
+        </div>
+    
+        <img id="myimage" height="50">
+
+<!--
+    <script>
+      $(function(){
+        $("input[type='Submit']").click(function(){
+            var $fileUpload = $("input[type='file']");
+            if (parseInt($fileUpload.get(0).files.length)>1){
+             alert("You can only upload a maximum of 1 files");
+            }
+        });    
+    });
+     function clearFileInput(id) 
+    { 
+        var oldInput = document.getElementById(id); 
+        var newInput = document.createElement("input"); 
+        newInput.type = "file"; 
+        newInput.id = oldInput.id; 
+        newInput.name = oldInput.name; 
+        newInput.className = oldInput.className; 
+        newInput.style.cssText = oldInput.style.cssText; 
+        // TODO: copy any other relevant attributes 
+        oldInput.parentNode.replaceChild(newInput, oldInput); 
+    }    
+    </script>
+        
+    <input type="file" id="files" name="files[]" accept=".jpg, .jpeg, .png"/>
+    <output id="list"></output>
+    <button type="button" value="Submit" onclick = "start()">submit</button>
+-->
+        
+    <button id="btn" type="randomImgButton" value="submit" onclick = "start()">Choose random image</button>
+
+    <script type="text/javascript">
+        document.getElementById('btn').onclick = function() {
+            
+            var min = 1;
+            var max = 2624;
+            var val = Math.floor(Math.random() * (max - min + 1)) + min;
+                src = 'https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell'+ (val).pad(4) + '.png';
+                img = document.createElement('img');
+
+            img.src = src;
+            document.body.appendChild(img);
+        }
+    </script>
+        
+        
+    <div>
+        <p id = "Result"></p>
+        <p id = "Probability"></p>
+    </div>
+        
+        
+    <script>
+    clearFileInput("files");
+    </script>    
+
+    <script> 
+
+     function handleFileSelect(evt) {
+       var files = evt.target.files; // FileList object
+       // Loop through the FileList and render image files as thumbnails.
+       for (var i = 0, f; f = files[i]; i++) {
+         // Only process image files.
+         if (!f.type.match('image.*')) {
+           continue;
+         }
+         var reader = new FileReader();
+         // Closure to capture the file information.
+         reader.onload = (function(theFile) {
+           return function(e) {
+             // Render thumbnail.
+             var span = document.createElement('span');
+             span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                               '" title="', escape(theFile.name), '"/>'].join('');
+             document.getElementById('list').insertBefore(span, null);
+           };
+         })(f);
+         // Read in the image file as a data URL.
+         reader.readAsDataURL(f);
+       }
      }
-     var reader = new FileReader();
-     // Closure to capture the file information.
-     reader.onload = (function(theFile) {
-       return function(e) {
-         // Render thumbnail.
-         var span = document.createElement('span');
-         span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                           '" title="', escape(theFile.name), '"/>'].join('');
-         document.getElementById('list').insertBefore(span, null);
-       };
-     })(f);
-     // Read in the image file as a data URL.
-     reader.readAsDataURL(f);
-   }
- }
- document.getElementById('files').addEventListener('change', handleFileSelect, false);
-</script>
-<div>
-    <p><b>Note:</b> Only one Image can be uploaded at one time</p>
-</div>    
-</body>
+     document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    </script>
+ 
+    </body>
 </html>
