@@ -61,6 +61,11 @@
     <button id="btn" type="randomImgButton" value="submit" onclick = "start()">Choose random image</button>
 
     <script type="text/javascript">
+        Number.prototype.pad = function(size) {
+            var sign = Math.sign(this) === -1 ? '-' : '';
+            return sign + new Array(size).concat([Math.abs(this)]).join('0').slice(-size);
+        }
+        
         document.getElementById('btn').onclick = function() {
             
             var min = 1;
