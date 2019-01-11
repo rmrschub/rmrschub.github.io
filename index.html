@@ -60,6 +60,12 @@
         
     <button id="btn" type="randomImgButton" value="submit" onclick = "start()">Choose random image</button>
 
+    <div>
+        <img id="elpv_image" src="" />
+        <p id = "Result"></p>
+        <p id = "Probability"></p>
+    </div>
+
     <script type="text/javascript">
         Number.prototype.pad = function(size) {
             var sign = Math.sign(this) === -1 ? '-' : '';
@@ -72,20 +78,12 @@
             var max = 2624;
             var val = Math.floor(Math.random() * (max - min + 1)) + min;
             src = 'https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell'+ (val).pad(4) + '.png';
-            document.getElementById('elpv_img').src = src;
-            
-            //img = document.createElement('img');
-            //img.src = src;
-            //document.body.appendChild('');
+            document.getElementById("elpv_img").src = src;
         }
     </script>
         
         
-    <div>
-        <img id="elpv_image" src="" />
-        <p id = "Result"></p>
-        <p id = "Probability"></p>
-    </div>
+
         
         
 
