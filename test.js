@@ -94,13 +94,13 @@ function predict(imgData) {
         var indices = findIndicesOfMax(pred, 1)
         console.log(indices)
         var probs = findTopValues(pred, 1)
-        var names = getClassNames(indices) 
+        //var names = getClassNames(indices) 
 
         //set the table 
         //setTable(names, probs) 
         document.getElementById("Result").innerHTML = names
         //document.getElementById("Probability").innerHTML = probs
-	console.log(names);
+	//console.log(names);
         console.log(document.getElementById("Result"));
     
   }
@@ -122,7 +122,7 @@ async function start(){
         //model.predict(tf.zeros([null,50,50,3]))
         
 	//load the class names
-        await loadDict()
+    //await loadDict()
         predict(img)
          
         }
