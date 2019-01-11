@@ -19,7 +19,7 @@
 
         <div class="container-fluid"> 
             <blockquote class="blockquote text-justify" style="margin:30px;">
-                <p> This is a simple tool that uses Resnet to recognize defecs in ELPV images. The model was trained to recognize  with 2.6k images and it achieves ~80.3% accuracy in detecting defects in PV mini modules.</p>
+                <p> This is a simple tool that uses Resnet to recognize defecs in ELPV images. The model was trained to recognize  with 2.6k images and it achieves ~80% accuracy in predicting defects in PV mini modules.</p>
             </blockquote>
         </div>
         
@@ -30,7 +30,7 @@
     
         <div class="centered">
             <img id="elpv_image" src="https://rmrschub.github.io/images/cell0001.png" />
-            <p id = "Result"></p>
+            <p id = "Result">Defect Probability: </p>
             <p id = "Probability"></p>
             
             <div class="centered">
@@ -53,6 +53,8 @@
                 var val = Math.floor(Math.random() * (max - min + 1)) + min;
                 src = 'https://rmrschub.github.io/images/cell'+ (val).pad(4) + '.png';
                 document.getElementById("elpv_image").src = src;
+                
+                document.getElementById("Probability").innerHTML = ""
             }
         </script>
         
