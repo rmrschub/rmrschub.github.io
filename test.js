@@ -66,7 +66,7 @@ function preprocess(img)
 {
 
     //convert the image data to a tensor 
-    let tensor = tf.fromPixels(img)
+    let tensor = tf.fromPixels(img, 1)
     //resize to 50 X 50
     const resized = tf.image.resizeBilinear(tensor, [300, 300]).toFloat()
     // Normalize the image 
