@@ -90,7 +90,7 @@ function predict(imgData) {
 async function start(){
     
     if (!model) {
-        model = await tf.loadModel('https://rmrschub.github.io/model/model.json', strict=true)
+        model = await tf.loadModel('https://rmrschub.github.io/elpv_resnet50/model.json', strict=true)
         var status = document.getElementById('status')
         status.innerHTML = 'Model Loaded'
     }
