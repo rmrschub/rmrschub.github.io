@@ -73,12 +73,6 @@ function preprocess(img)
 
     //convert the image data to a tensor 
     let tensor = tf.fromPixels(img, 1)
-    //resize to 50 X 50
-    //const resized = tf.image.resizeBilinear(tensor, [300, 300]).toFloat()
-    // Normalize the image 
-    //const offset = tf.scalar(255.0);
-    //const normalized = tf.scalar(1.0).sub(resized.div(offset));
-    //We add a dimension to get a batch shape 
     const batched = tensor.expandDims(0)
     return batched
 
@@ -87,48 +81,20 @@ function preprocess(img)
 get the prediction 
 */
 function predict(imgData) {
-        
-        var class_names = ['OK','DEFECTIVE']
-        //get the prediction 
+
         var pred = model.predict(preprocess(imgData)).dataSync()
         console.log(pred)            
-        //retreive the highest probability class label 
-        const idx = tf.argMax(pred);
-
-                
-        //find the predictions 
-        //var indices = findIndicesOfMax(pred, 1)
-        //console.log(indices)
-        //var probs = findTopValues(pred, 1)
-        //var names = getClassNames(indices) 
-
-        //set the table 
-        //setTable(names, probs) 
-        //document.getElementById("Result").innerHTML = names
-        //document.getElementById("Probability").innerHTML = probs
-	//console.log(names);
-        //console.log(document.getElementById("Result"));
-    
-  }
+        document.getElementById("Probability").innerHTML = pred
+}
 
 async function start(){
-	//img = document.getElementById('image').files[0];
-	
-        
         model = await tf.loadModel('https://github.com/rmrschub/elpv/raw/master/elpv_resnet50/model.json', strict=true)
-        
+    
         var status = document.getElementById('status')
       
         status.innerHTML = 'Model Loaded'
-        
-        //document.getElementById('status').innerHTML = 'Model Loaded';
-      
 
-        img = document.getElementById('list').firstElementChild.firstElementChild;
-        //model.predict(tf.zeros([null,50,50,3]))
-        
-	//load the class names
-    //await loadDict()
-        predict(img)
-         
-        }
+        img = document.getElementById('elpv_image')
+
+        predict(img)         
+}
