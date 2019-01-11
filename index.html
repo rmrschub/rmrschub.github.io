@@ -29,7 +29,7 @@
     
     
         <div class="centered">
-            <img crossorigin="anonymous"  id="elpv_image" src="https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell0001.png" />
+            <img id="elpv_image" src="https://rmrschub.github.io/images/cell0001.png" />
             <p id = "Result"></p>
             <p id = "Probability"></p>
             
@@ -51,7 +51,7 @@
                 var min = 1;
                 var max = 2624;
                 var val = Math.floor(Math.random() * (max - min + 1)) + min;
-                src = 'https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell'+ (val).pad(4) + '.png';
+                src = 'https://rmrschub.github.io/images/cell'+ (val).pad(4) + '.png';
                 document.getElementById("elpv_image").src = src;
             }
         </script>
