@@ -4,15 +4,15 @@ var model;
 /*
 load the class names 
 */
-async function loadDict() {
-  
-    loc = 'model2/class_names.txt'
-    console.log(loc)
-    await $.ajax({
-        url: loc,
-        dataType: 'text',
-    }).done(success);
-}
+//async function loadDict() {
+//  
+//    loc = 'model2/class_names.txt'
+//    console.log(loc)
+//    await $.ajax({
+//        url: loc,
+//        dataType: 'text',
+//    }).done(success);
+//}
 
 /*
 load the class names
@@ -91,17 +91,17 @@ function predict(imgData) {
 
                 
         //find the predictions 
-        var indices = findIndicesOfMax(pred, 1)
-        console.log(indices)
-        var probs = findTopValues(pred, 1)
+        //var indices = findIndicesOfMax(pred, 1)
+        //console.log(indices)
+        //var probs = findTopValues(pred, 1)
         //var names = getClassNames(indices) 
 
         //set the table 
         //setTable(names, probs) 
-        document.getElementById("Result").innerHTML = names
+        //document.getElementById("Result").innerHTML = names
         //document.getElementById("Probability").innerHTML = probs
 	//console.log(names);
-        console.log(document.getElementById("Result"));
+        //console.log(document.getElementById("Result"));
     
   }
 
