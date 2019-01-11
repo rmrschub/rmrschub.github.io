@@ -58,13 +58,16 @@
     <button type="button" value="Submit" onclick = "start()">submit</button>
 -->
         
-    <button id="btn" type="randomImgButton" value="submit" onclick = "start()">Choose random image</button>
-
     <div>
         <img id="elpv_image" src="https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell0001.png" />
         <p id = "Result"></p>
         <p id = "Probability"></p>
     </div>
+        
+        
+        
+    <button id="btnPredict" value="submit" onclick = "start()">Predict defect</button>
+    <button id="btnImg"     value="submit" >Choose random image</button>
 
     <script type="text/javascript">
         Number.prototype.pad = function(size) {
@@ -72,12 +75,13 @@
             return sign + new Array(size).concat([Math.abs(this)]).join('0').slice(-size);
         }
         
-        document.getElementById('btn').onclick = function() {
+        document.getElementById('btnImg').onclick = function() {
             
             var min = 1;
             var max = 2624;
             var val = Math.floor(Math.random() * (max - min + 1)) + min;
             src = 'https://github.com/rmrschub/rmrschub.github.io/raw/master/images/cell'+ (val).pad(4) + '.png';
+            console.log(val)
             document.getElementById("elpv_img").src = src;
         }
     </script>
